@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  color: #1a1d2e;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 24px 40px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* Upload Section */
+.upload-section {
+  background: white;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.upload-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1d2e;
+}
+
+.subtitle {
+  color: #7b82a0;
+  font-size: 0.88rem;
+  margin-bottom: 24px;
+}
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed #c0c8e0;
+  border-radius: 12px;
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8faff;
+  margin-bottom: 20px;
+}
+
+.dropzone:hover {
+  border-color: #0077b6;
+  background: #eef6ff;
+}
+
+.dropzone.active {
+  border-color: #0077b6;
+  background: #eef6ff;
+}
+
+.dropzone.has-file {
+  border-color: #06d6a0;
+  background: #edfbf6;
+}
+
+.drop-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.drop-text p {
+  color: #7b82a0;
+  font-size: 0.95rem;
+}
+
+.or {
+  font-size: 0.8rem !important;
+  margin-top: 6px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.file-icon {
+  font-size: 2rem;
+}
+
+.file-name {
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+.file-size {
+  color: #7b82a0;
+  font-size: 0.85rem;
+}
+
+/* Button */
+.analyze-btn {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.analyze-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e4f0;
+  border-top-color: #0077b6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: #7b82a0;
+  font-size: 0.95rem;
+}
+
+/* Error */
+.error {
+  background: #fff0f1;
+  border: 1px solid #ffc9cc;
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: #b91c1c;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+/* Result */
+.result {
+  background: white;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.result-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.copy-btn {
+  background: #f0f4f8;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  background: #e0e8f0;
+}
+
+/* Markdown */
+.explanation {
+  line-height: 1.8;
+  font-size: 0.95rem;
+  color: #2d3748;
+}
+
+.explanation h1,
+.explanation h2,
+.explanation h3 {
+  color: #0077b6;
+  margin: 20px 0 10px;
+}
+
+.explanation p {
+  margin-bottom: 12px;
+}
+
+.explanation ul, 
+.explanation ol {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.explanation strong {
+  color: #1a1d2e;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #7b82a0;
+  font-size: 0.8rem;
+  border-top: 1px solid #e0e4f0;
+  background: white;
+}
