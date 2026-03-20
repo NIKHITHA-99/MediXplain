@@ -28,7 +28,7 @@ function App() {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const response = await axios.post('/analyze', formData);
+     const response = await axios.post('https://medixplain.onrender.com/analyze', formData);
       if (response.data.error) {
         setError(response.data.error);
       } else {
