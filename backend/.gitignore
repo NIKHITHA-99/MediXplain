@@ -1,0 +1,24 @@
+# Environment
+.env
+backend/.env
+frontend/.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# ChromaDB
+backend/chroma_db/
+
+# Node
+node_modules/
+frontend/node_modules/
+build/
+frontend/build/
+
+# Cache
+*.cache
+.DS_Store
+Thumbs.db
