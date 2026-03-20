@@ -1,10 +1,15 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import FakeEmbeddings
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
 MEDICAL_KNOWLEDGE = """
 HEMOGLOBIN:
 Normal range for men: 13.5-17.5 g/dL
@@ -73,17 +78,14 @@ High SGOT indicates liver or heart problems
 """
 
 def create_rag_chain():
-    # Split medical knowledge
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=50
     )
     chunks = splitter.create_documents([MEDICAL_KNOWLEDGE])
 
-    # Create embeddings
-embeddings = FakeEmbeddings(size=384)
+    embeddings = FakeEmbeddings(size=384)
 
-    # Create vector store
     vectorstore = Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
@@ -92,14 +94,12 @@ embeddings = FakeEmbeddings(size=384)
 
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
-    # Groq LLM
     llm = ChatGroq(
         model="llama3-8b-8192",
         groq_api_key=os.getenv("GROQ_API_KEY"),
         temperature=0.3
     )
 
-    # Prompt
     prompt = PromptTemplate(
         template="""You are a friendly medical assistant explaining medical reports to normal people.
 Use the medical knowledge below to explain the report accurately.
@@ -121,7 +121,6 @@ Explanation:""",
         input_variables=["context", "question"]
     )
 
-    # RAG chain
     chain = (
         {"context": retriever, "question": RunnablePassthrough()}
         | prompt
