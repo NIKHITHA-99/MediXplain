@@ -14,12 +14,15 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001",
-                   "http://localhost:3002", "http://localhost:3003"],
+    allow_origins=[
+        "https://medi-xplain-wine.vercel.app",
+        "http://localhost:3000",
+        "http://localhost:3008",
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 rag_chain = create_rag_chain()
 
 def extract_text_from_pdf(file_bytes):
