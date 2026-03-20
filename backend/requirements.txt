@@ -9,5 +9,4 @@ langchain-groq
 langchain-core
 langchain-text-splitters
 chromadb
-fastembed
 python-multipart
