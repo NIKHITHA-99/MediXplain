@@ -1,6 +1,5 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
@@ -82,7 +81,7 @@ def create_rag_chain():
     chunks = splitter.create_documents([MEDICAL_KNOWLEDGE])
 
     # Create embeddings
-  embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+embeddings = FakeEmbeddings(size=384)
 
     # Create vector store
     vectorstore = Chroma.from_documents(
